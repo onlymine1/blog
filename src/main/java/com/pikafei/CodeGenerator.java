@@ -45,9 +45,9 @@ public class CodeGenerator {
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
 //        gc.setOutputDir("D:\\test");
-        gc.setAuthor("关注公众号：MarkerHub");
+        gc.setAuthor("wmf");
         gc.setOpen(false);
-        // gc.setSwagger2(true); 实体属性 Swagger2 注解
+//         gc.setSwagger2(true); //实体属性 Swagger2 注解
         gc.setServiceName("%sService");
         mpg.setGlobalConfig(gc);
 
@@ -57,13 +57,13 @@ public class CodeGenerator {
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("admin");
+        dsc.setPassword("123456");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(null);
-        pc.setParent("com.markerhub");
+        pc.setParent("com");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -109,6 +109,7 @@ public class CodeGenerator {
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix("m_");
+        strategy.setEntityTableFieldAnnotationEnable(true);
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
